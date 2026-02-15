@@ -96,14 +96,37 @@ canvas.addEventListener('mousedown', (e) => {
     if (circles.length < 5) spawnOrb();
 });
 
+// Game Timer
+let timeLeft = 30;
+function updateTimer() {
+    if (!gameActive) return;
+    timeLeft--;
+    if (timeLeft <= 0) {
+        gameActive = false;
+        document.getElementById('final-score').textContent = score;
+        gameOverScreen.classList.remove('hidden');
+        GametSDK.matchEnd({ score: score });
+    }
+}
+
 document.getElementById('start-btn').addEventListener('click', () => {
     gameActive = true;
     score = 0;
+    timeLeft = 30;
     scoreEl.textContent = score;
     circles = [];
     for(let i=0; i<8; i++) spawnOrb();
     startScreen.classList.add('hidden');
     animate();
+    
+    // Start interval
+    const timerId = setInterval(() => {
+        if (!gameActive) {
+            clearInterval(timerId);
+            return;
+        }
+        updateTimer();
+    }, 1000);
 
     // Start Session in SDK
     GametSDK.matchStart();
@@ -119,16 +142,3 @@ document.getElementById('restart-btn').addEventListener('click', () => {
     animate();
 });
 
-// Simple Game Over after 15 seconds
-setTimeout(() => {
-    setInterval(() => {
-        if(gameActive && score > 200) {
-             gameActive = false;
-             document.getElementById('final-score').textContent = score;
-             gameOverScreen.classList.remove('hidden');
-             
-             // FINAL SCORE SUBMISSION
-             GametSDK.matchEnd({ score: score });
-        }
-    }, 1000);
-}, 5000);

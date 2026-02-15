@@ -51,7 +51,7 @@
         }
 
         /**
-         * Report Game Start
+         * Report Game Start (Alias for matchStart)
          */
         reportGameStarted() {
             this._sendToPlatform("GAME_STARTED", {
@@ -59,8 +59,12 @@
             });
         }
 
+        matchStart() {
+            this.reportGameStarted();
+        }
+
         /**
-         * Report Live Score
+         * Report Live Score (Alias for addScore/updateScore)
          */
         reportScoreUpdate(score) {
             if (typeof score !== 'number') {
@@ -70,8 +74,12 @@
             this._sendToPlatform("SCORE_UPDATE", { score });
         }
 
+        addScore(score) {
+            this.reportScoreUpdate(score);
+        }
+
         /**
-         * Report Final Results
+         * Report Final Results (Alias for matchEnd)
          */
         reportGameOver(data) {
             if (this.context.reported) return;
@@ -87,6 +95,10 @@
                 mode: this.context.mode,
                 sessionId: this.context.sessionId
             });
+        }
+
+        matchEnd(data) {
+            this.reportGameOver(data);
         }
 
         /**
