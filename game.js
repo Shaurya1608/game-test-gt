@@ -101,6 +101,7 @@ let timeLeft = 30;
 function updateTimer() {
     if (!gameActive) return;
     timeLeft--;
+    document.getElementById('timer').textContent = timeLeft;
     if (timeLeft <= 0) {
         gameActive = false;
         document.getElementById('final-score').textContent = score;
