@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEON SLAYER | GamerThred Sample</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="game-container">
+        <canvas id="gameCanvas"></canvas>
+
+        <div id="ui-layer">
+            <div class="header">
+                <div class="score-box">
+                    <span class="label">SCORE</span>
+                    <span id="score">0</span>
+                </div>
+                <div id="status-badge" class="badge">SYCNING...</div>
+            </div>
+
+            <div id="start-screen" class="overlay">
+                <h1>NEON SLAYER</h1>
+                <p>Click the energy orbs to harvest points.</p>
+                <button id="start-btn">INITIALIZE MISSION</button>
+            </div>
+
+            <div id="game-over" class="overlay hidden">
+                <h2>MISSION FINALIZED</h2>
+                <div class="final-score">TOTAL HARVEST: <span id="final-score">0</span></div>
+                <button id="restart-btn">RE-INITIALIZE</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SDK Import -->
+    <script src="gamethread-sdk.js"></script>
+    <script src="game.js"></script>
+</body>
+
+</html>

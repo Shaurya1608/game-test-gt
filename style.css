@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background: #050505;
+    color: white;
+    overflow: hidden;
+}
+
+#game-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+canvas {
+    display: block;
+}
+
+#ui-layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.score-box {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px border white/10;
+    padding: 0.5rem 1.5rem;
+    border-radius: 1rem;
+    backdrop-filter: blur(10px);
+}
+
+.score-box .label {
+    display: block;
+    font-size: 0.6rem;
+    font-weight: 800;
+    letter-spacing: 0.2rem;
+    color: #a855f7;
+    margin-bottom: 0.2rem;
+}
+
+#score {
+    font-size: 2rem;
+    font-weight: 900;
+    font-variant-numeric: tabular-nums;
+}
+
+.badge {
+    padding: 0.4rem 0.8rem;
+    background: #a855f7;
+    font-size: 0.6rem;
+    font-weight: 900;
+    border-radius: 0.5rem;
+    letter-spacing: 0.1rem;
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+    text-align: center;
+    z-index: 10;
+}
+
+.hidden {
+    display: none !important;
+}
+
+h1,
+h2 {
+    font-size: 4rem;
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, #a855f7, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+p {
+    color: #666;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+button {
+    padding: 1rem 2.5rem;
+    background: white;
+    color: black;
+    border: none;
+    border-radius: 1rem;
+    font-weight: 900;
+    font-size: 0.8rem;
+    letter-spacing: 0.1rem;
+    cursor: pointer;
+    transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+button:hover {
+    transform: scale(1.05);
+    background: #a855f7;
+    color: white;
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.5);
+}
+
+.final-score {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #888;
+}
+
+#status-badge.connected {
+    background: #22c55e;
+}
